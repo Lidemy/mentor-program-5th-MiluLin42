@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>新拖延運動報名表單</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <form class="apply-form">
+      <h1 class="apply-form__title">新拖延運動報名表單</h1>
+      <p class="apply-form__desc">
+        活動日期：2020/12/10 ~ 2020/12/11<br>
+        活動地點：台北市大安區新生南路二段1號</p>
+        <p class="apply-form__caution">
+          * 必填</p>
+        <div class="input">
+          <div class="input__title required">
+            暱稱
+          </div>
+          <div class="input__block">
+            <input name="nickname" type="text">
+          </div>
+        </div>
+        <div class="input">
+          <div class="input__title required">
+            電子郵件
+          </div>
+          <div class="input__block">
+            <input name="email" type="text">
+          </div>
+        </div>
+        <div class="input">
+          <div class="input__title required">
+            手機號碼
+          </div>
+          <div class="input__block">
+            <input name="cellpohone" type="text">
+          </div>
+        </div>
+        <div class="input">
+          <div class="input__title required">
+            報名類型
+          </div>
+          <div class="input__block">
+            <label>
+              <input id="type1" name="selection" value="1" type="radio">
+              躺在床上用想像力實作
+            </label>
+            <label>
+              <input id="type2" name="selection" value="2" type="radio">
+              趴在地上滑手機找現成的
+            </label>
+          </div>
+        </div>
+        <div class="input">
+          <div class="input__title">
+            怎麼知道這個活動的？
+          </div>
+          <div class="input__block">
+            <input name="howtoknow" type="text">
+          </div>
+        </div>
+        <div class="input">
+          <div class="input__title">
+            其他
+          </div>
+          <div class="input__desc">
+            對活動的一些建議
+          </div>
+          <div class="input__block">
+            <input name="other" type="text">
+          </div>
+        </div>
+        <input class="apply-form__submit" type="submit">
+        <p class="apply-form__desc">請勿透過表單送出您的密碼。</p>
+    </form>
+  </div>
+  <footer>© 2020 © Copyright. All rights Reserved.</footer>
+</body>
+</html>
