@@ -16,7 +16,7 @@
   }
 
   $content = $_POST['content'];
-  $sql = "insert into milu_comments(username, content) values (?, ?)";
+  $sql = "INSERT INTO milu_comments(username, content) VALUES (?, ?)";
   $statement = $conn->prepare($sql);
   $statement->bind_param('ss', $username, $content);
   $result = $statement->execute();

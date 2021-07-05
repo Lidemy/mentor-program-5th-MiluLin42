@@ -15,7 +15,7 @@
   $username = $_POST['username'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-  $sql = "insert into milu_users(nickname, username, password) values (?, ?, ?)";
+  $sql = "INSERT INTO milu_users(nickname, username, password) VALUES (?, ?, ?)";
   $statement = $conn->prepare($sql);
   $statement->bind_param("sss", $nickname, $username, $password);
   $result = $statement->execute();

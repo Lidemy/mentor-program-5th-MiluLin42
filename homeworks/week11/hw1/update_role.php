@@ -19,12 +19,13 @@
     exit;
   }
   
-  $sql = 'update milu_users set role=? where id=?';
+  $sql = 'UPDATE milu_users SET role=? WHERE id=?';
   $statement = $conn->prepare($sql);
   $statement->bind_param('si', $role, $id);
 
   $result = $statement->execute();
   if (!$result) {
+    header('Location: index.php');
     die('Error:' . $conn->error);
   }
   

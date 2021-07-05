@@ -14,9 +14,9 @@
   $username = $_SESSION['username'];
   $user = getUserFromUsername($username);
 
-  $sql = "update milu_comments set is_deleted=1 where id=? and username =?";
+  $sql = "UPDATE milu_comments SET is_deleted=1 WHERE id=? AND username =?";
   if (isAdministrator($user)) {
-    $sql = "update milu_comments set is_deleted=1 where id=?";
+    $sql = "UPDATE milu_comments SET is_deleted=1 WHERE id=?";
   }
   $statement = $conn->prepare($sql);
   if (isAdministrator($user)) {

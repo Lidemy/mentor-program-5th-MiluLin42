@@ -16,7 +16,7 @@
 
   $content = $_POST['content'];
   $title = $_POST['title'];
-  $sql = 'insert into milu_posts(username, title, content) values (?, ?, ?)';
+  $sql = 'INSERT INTO milu_posts(username, title, content) VALUES (?, ?, ?)';
   $statement = $conn->prepare($sql);
   $statement->bind_param('sss', $username, $title, $content);
   $result = $statement->execute();

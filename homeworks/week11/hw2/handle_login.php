@@ -14,7 +14,7 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = "select * from milu_users where username=?";
+  $sql = "SELECT * FROM milu_users WHERE username=?";
   $statement = $conn->prepare($sql);
   $statement->bind_param("s", $username);
   $result = $statement->execute();
