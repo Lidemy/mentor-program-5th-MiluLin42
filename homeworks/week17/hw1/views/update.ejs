@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  <%- include('template/head') %>
+</head>
+
+<html>
+  <%- include('template/navbar') %>
+  <div class="container">
+    <form method="POST" action="/update_posts/<%= post.id %>">      
+      <h2>文章內容</h2>
+      <div class="mb-3">
+        <label class="form-label">文章標題：</label>
+        <textarea class="form-control" name="posts_title"><%= post.title %></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">文章內容：</label>
+        <textarea class="form-control" name="posts_content" rows="3"><%= post.content %></textarea>
+      </div>
+      <button class="btn btn-outline-info" type="submit">送出</button>
+    </form>
+  </div>
+</html>
+

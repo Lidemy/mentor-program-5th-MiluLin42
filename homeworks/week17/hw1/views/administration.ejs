@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <%- include('template/head') %>
+</head>
+
+<html>
+  <%- include('template/navbar') %>
+  <div class="container" method="POST" action="/post">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">文章標題</th>
+          <th scope="col">創建時間</th>
+          <th scope="col">編輯/刪除文章</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% posts.forEach(function(post) { %>
+          <tr>
+            <th scope="row"><%= posts.id %></th>
+            <td><%= post.title %></td>
+            <td><%= post.created_at %></td>
+            <td>
+              <a type="sumit" class="btn btn-secondary btn-sm" href="/update_posts/<%= post.id %>">編輯</button>
+              <a type="sumit" class="btn btn-secondary btn-sm" href="/delete_posts/<%= post.id %>">刪除</button>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</html>
