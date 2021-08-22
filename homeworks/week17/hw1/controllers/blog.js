@@ -1,52 +1,105 @@
-const blogModel = require('../models/blog')
+const db = require('../models')
+
+const { Post } = db
 
 const blogController = {
   getAll: (req, res) => {
-    blogModel.getAll((err, results) => {
-      if (err) console.log(err)
+    Post.findAll({
+      where: {
+        is_delete: 0
+      }
+    }).then((posts) => {
       res.render('blog', {
-        posts: results
+        posts
       })
     })
   },
   get: (req, res) => {
-    const { id } = req.params.id
-    blogModel.get(id, (err, result) => {
-      res.render('post', {
-        post: result
-      })
+    Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((post) => {
+      res.render('post', { post })
     })
   },
   add: (req, res) => {
-    if (!req.body.title || !req.body.content) {
-      return res.redirect('/')
+    const { username } = req.session
+    const { title, content } = req.body
+    if (!username || !title || !content) {
+      return res.redirect('/newPost')
     }
-    blogModel.add(req.session.username, req.body.title, req.body.content, (err) => res.redirect('/'))
+    Post.create({
+      title,
+      content
+    }).then(() => {
+      res.redirect('/')
+    }).catch((err) => {
+      console.log(err)
+      res.redirect('/')
+    })
   },
   update: (req, res) => {
-    blogModel.get(req.params.id, (err, result) => {
-      res.render('update', {
-        post: result
-      })
+    Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((post) => {
+      res.render('update', { post })
     })
   },
   handleUpdate: (req, res) => {
-    blogModel.update(req.session.username, req.params.id, req.body.posts_title, req.body.posts_content, (err) => {
+    const { username } = req.session
+    const { title, content } = req.body
+    if (!username || !title || !content) {
+      return res.redirect('/')
+    }
+    Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then((post) => post.update({
+      title,
+      content
+    })).then(() => {
+      res.redirect('/')
+    }).catch((err) => {
+      console.log(err)
       res.redirect('/')
     })
   },
   delete: (req, res) => {
-    blogModel.delete(req.session.username, req.params.id, (err) => {
+    const { username } = req.session
+    if (username) {
+      Post.findOne({
+        where: {
+          id: req.params.id
+        }
+      }).then((post) => {
+        post.update({
+          is_delete: 1
+        })
+      }).then(() => {
+        res.redirect('administration')
+      }).catch((err) => {
+        console.log(err)
+        res.redirect('/')
+      })
+    } else {
       res.redirect('/')
-    })
+    }
   },
   admin: (req, res) => {
-    blogModel.getAll((err, results) => {
-      if (err) console.log(err)
-      res.render('administration', {
-        posts: results
+    const { username } = req.session
+    if (username) {
+      Post.findAll().then((posts) => {
+        res.render('administration', {
+          posts
+        })
       })
-    })
+    } else {
+      res.redirect('/')
+    }
   }
 }
 
