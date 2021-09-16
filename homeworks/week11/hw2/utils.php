@@ -4,7 +4,7 @@
   function getUserFromUsername($username) {
     global $conn;
     $sql = sprintf(
-      "select * from milu_users where username = '%s'",
+      "SELECT * FROM milu_users WHERE username = '%s'",
       $username
     );
     $result = $conn->query($sql);

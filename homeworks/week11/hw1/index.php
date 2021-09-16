@@ -18,14 +18,14 @@
   $offset = ($page - 1) * $items_per_page;
 
   $statement = $conn->prepare(
-    'select ' .
-      'C.id as id, C.content as content, C.created_at as created_at, ' .
-      'U.nickname as nickname, U.username as username ' .
-    'from milu_comments as C ' .
-    'left join milu_users as U on C.username = U.username ' .
-    'where C.is_deleted is NULL ' .
-    'order by C.id desc ' .
-    'limit ? offset ? '
+    'SELECT ' .
+      'C.id AS id, C.content AS content, C.created_at AS created_at, ' .
+      'U.nickname AS nickname, U.username AS username ' .
+    'FROM milu_comments AS C ' .
+    'LEFT JOIN milu_users AS U ON C.username = U.username ' .
+    'WHERE C.is_deleted = 0 ' .
+    'ORDER BY C.id DESC ' .
+    'LIMIT ? OFFSET ? '
   );
   $statement->bind_param('ii', $items_per_page, $offset);
   $result = $statement->execute();
@@ -81,8 +81,7 @@
     ?>
 
     <form class="board__form--comments" method="POST" action="handle_add_comment.php">
-      <textarea name="content" rows="5">
-      </textarea>
+      <textarea name="content" rows="5"></textarea>
       <?php if ($username && !identification($user, 'addComment', NULL)) { ?>
         <h3 class="board__notice">你已被停權</h3>
       <?php } else if ($username) { ?>

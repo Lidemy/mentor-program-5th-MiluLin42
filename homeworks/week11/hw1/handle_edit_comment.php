@@ -15,9 +15,9 @@
   $id = $_POST['id'];
   $content = $_POST['content'];
 
-  $sql = 'update milu_comments set content=? where id=? and username=?';
+  $sql = 'UPDATE milu_comments SET content=? WHERE id=? AND username=?';
   if (isAdministrator($user)) {
-    $sql = 'update milu_comments set content=? where id=?';
+    $sql = 'UPDATE milu_comments SET content=? WHERE id=?';
   }
   $statement = $conn->prepare($sql);
   if (isAdministrator($user)) {

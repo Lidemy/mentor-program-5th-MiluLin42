@@ -10,9 +10,9 @@
     $username = $_SESSION['username'];
     $user = getUserFromUsername($username);
   }
-  $sql = 'select * from milu_comments where id = ? and username = ?';
+  $sql = 'SELECT * FROM milu_comments WHERE id = ? AND username = ?';
   if (isAdministrator($user)) {
-    $sql = 'select * from milu_comments where id = ?';
+    $sql = 'SELECT * FROM milu_comments WHERE id = ?';
   }
   $statement = $conn->prepare($sql);
   if (isAdministrator($user)) {
@@ -54,9 +54,7 @@
       }
     ?>
       <form class="board__form--comments" method="POST" action="handle_edit_comment.php">
-        <textarea name="content" rows="5">
-          <?php echo escape($row['content']); ?>
-        </textarea>
+        <textarea name="content" rows="5"><?php echo escape($row['content']); ?></textarea>
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
         <input class="board__form--submit" type="submit" />
       </form>

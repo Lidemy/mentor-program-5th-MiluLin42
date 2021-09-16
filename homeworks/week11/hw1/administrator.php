@@ -16,7 +16,7 @@
   }
 
   $statement = $conn->prepare(
-    'select id, role, nickname, username from milu_users order by id asc'
+    'SELECT id, role, nickname, username FROM milu_users ORDER BY id ASC'
   );
   $result = $statement->execute();
   if (!$result) {

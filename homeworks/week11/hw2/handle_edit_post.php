@@ -19,7 +19,7 @@
   $title = $_POST['title'];
   $content = $_POST['content'];
 
-  $sql = 'update milu_posts set title=?, content=? where id=?';
+  $sql = 'UPDATE milu_posts SET title=?, content=? WHERE id=?';
   $statement = $conn->prepare($sql);
   $statement->bind_param('ssi', $title, $content, $id);
   

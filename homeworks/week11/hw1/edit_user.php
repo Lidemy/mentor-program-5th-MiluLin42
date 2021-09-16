@@ -12,7 +12,7 @@
 
   $username = $_SESSION['username'];
   $nickname = $_POST['nickname'];
-  $sql = "update milu_users set nickname=? where username=?";
+  $sql = "UPDATE milu_users SET nickname=? WHERE username=?";
   $statement = $conn->prepare($sql);
   $statement->bind_param('ss', $nickname, $username);
   $result = $statement->execute();

@@ -6,13 +6,13 @@
   $id = intval($_GET['id']);
 
   $statement = $conn->prepare(
-    'select ' .
-      'P.id as id, P.content as content, P.title as title, ' .
-      'P.created_at as created_at, ' .
-      'U.username as username ' .
-    'from milu_posts as P ' .
-    'left join milu_users as U on P.username = U.username ' .
-    'where P.id = ? '
+    'SELECT ' .
+      'P.id AS id, P.content AS content, P.title AS title, ' .
+      'P.created_at AS created_at, ' .
+      'U.username AS username ' .
+    'FROM milu_posts AS P ' .
+    'LEFT JOIN milu_users AS U ON P.username = U.username ' .
+    'WHERE P.id = ? '
   );
   $statement->bind_param('i', $id);
   $result = $statement->execute();

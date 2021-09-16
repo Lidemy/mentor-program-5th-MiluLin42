@@ -13,7 +13,7 @@
 
   $id = $_GET['id'];
 
-  $sql = 'update milu_posts set is_deleted=1 where id=?';
+  $sql = 'UPDATE milu_posts SET is_deleted=1 WHERE id=?';
   $statement = $conn->prepare($sql);
   $statement->bind_param('i', $id);
   

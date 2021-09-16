@@ -11,15 +11,15 @@
   $offset = ($page - 1) * $items_per_page;
 
   $statement = $conn->prepare(
-    'select ' .
-      'P.id as id, P.content as content, P.title as title, ' .
-      'P.created_at as created_at, ' .
-      'U.username as username ' .
-    'from milu_posts as P ' .
-    'left join milu_users as U on P.username = U.username ' .
-    'where P.is_deleted = 0 ' .
-    'order by P.id desc ' .
-    'limit ? offset ? '
+    'SELECT ' .
+      'P.id AS id, P.content AS content, P.title AS title, ' .
+      'P.created_at AS created_at, ' .
+      'U.username AS username ' .
+    'FROM milu_posts AS P ' .
+    'LEFT JOIN milu_users AS U ON P.username = U.username ' .
+    'WHERE P.is_deleted = 0 ' .
+    'ORDER BY P.id DESC ' .
+    'LIMIT ? OFFSET ? '
   );
   $statement->bind_param('ii', $items_per_page, $offset);
   $result = $statement->execute();
