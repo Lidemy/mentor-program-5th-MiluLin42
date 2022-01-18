@@ -1,0 +1,38 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Blog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/articles">文章列表</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">分類專區</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">關於我</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <span class="navbar-text">
+      <% if (username) { %>
+        <a class="btn btn-outline-success" href="/newPost">發布文章</a>
+        <a class="btn btn-outline-success" href="/administration">管理後臺</a>
+        <a class="btn btn-outline-success" href="/logout">登出</a>
+      <% } else { %>
+        <a class="btn btn-outline-success" href="/login">登入</a>
+      <% } %>
+    </span>
+  </nav>
+
+  <div class="text-center" style="background-color: #81C0C0; height: 200px;">
+    <h3 style="color: #FFFFFF;">存放技術之地</h3>
+    <small class="text-muted">Welcome to my blog</small>
+  </div>
+
+</div>

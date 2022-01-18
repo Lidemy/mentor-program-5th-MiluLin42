@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+  <head>
+    <%- include('template/head') %>
+    <style>
+      .lottery {
+        background-image: url('<%= prize.picUrl %>');
+        background-repeat: no-repeat;
+        background-size:cover;
+      }
+    </style>
+  </head>
+  <html>
+    <%- include('template/navbar') %>
+
+    <section class="lottery">
+      <div class="lottery__info">
+          <div class="lottery__title">2021 夏日輕盈特賞！ 抽獎結果</div>
+          <div class="lottery__info--description">
+            <div class="lottery__info--title">獎品：</div>
+            <div class="lottery__info--content">
+              <%= prize.prizeItem %>
+            </div>
+          </div>
+          <div class="lottery__info--description">
+            <div class="lottery__info--title">說明：</div>
+            <div class="lottery__info--content">
+              <%= prize.desc %>
+            </div>
+          </div>
+          <a class="lottery__info--btn" href="/">回首頁</a>
+      </div>
+    </section>
+
+  <%- include('template/footer') %>
+</html>

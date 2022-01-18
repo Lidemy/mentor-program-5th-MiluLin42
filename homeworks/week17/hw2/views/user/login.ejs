@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <%- include('../template/head') %>
+</head>
+
+<html>
+  <%- include('../template/navbar') %>
+  
+  <section class="lottery">
+    <div class="lottery__info">
+      <% if (errorMessage && errorMessage.length > 0) { %>
+          <%= errorMessage %>
+      <% } %>
+      <form method="POST" action="login">
+        <div class="lottery__title">請先登入</div>
+        <div class="lottery__info--description">
+          <div class="lottery__info--title">Username：</div>
+          <div class="lottery__info--content">
+            <input class="login__input" type="text" name="username" />
+          </div>
+        </div>
+        <div class="lottery__info--description">
+          <div class="lottery__info--title">Password ：</div>
+          <div class="lottery__info--content">
+            <input class="login__input" type="password" name="password" />
+          </div>
+        </div>
+        <button type="submit" class="login__btn">登入</button> 
+      </form>
+    </div>
+  </section>
+
+  <%- include('../template/footer') %>
+</html>

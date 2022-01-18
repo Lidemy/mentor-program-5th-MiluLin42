@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <%- include('template/head') %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<html>
+  <%- include('template/navbar') %>
+  <div class="container" method="POST" action="/backstage">
+    <a type="submit" class="btn btn-danger mt-3" href="/add_prize">新增獎項</a>
+    <table class="table">
+      <thead>
+        <form method="POST" action="/add_prize">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"><label class="form-label">獎項</label></th>
+            <th scope="col"><label class="form-label">圖片網址</label></th>
+            <th scope="col"><label class="form-label">說明</label></th>
+            <th scope="col"><label class="form-label">機率</label></th>
+            <th scope="col">提交</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td><textarea class="form-control" name="prizeItem"></textarea></td>
+              <td><textarea class="form-control" name="picUrl"></textarea></td>
+              <td><textarea class="form-control" name="desc"></textarea></td>
+              <td><textarea class="form-control" name="probability"></textarea></td>
+              <td><button class="btn btn-outline-info" type="submit">送出</button></td>
+            </tr>
+        </tbody>
+      </form>
+    </table>
+  </div>
+  <%- include('template/footer') %>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <head>
+    <%- include('template/head') %>
+  </head>
+  <html>
+    <%- include('template/navbar') %>
+
+    <section class="lottery">
+      <div class="lottery__info">
+          <div class="lottery__title">2021 夏日輕盈特賞！ 抽獎品項大公開！</div>
+          <% prizes.forEach(e => { %>
+            <div class="lottery__info--description">
+              <div class="lottery__info--title"></div>
+              <div class="lottery__info--content"><%= e.prizeItem %></div>
+            </div>
+          <% }) %>
+          <a class="lottery__info--btn" href="/lottery">馬上前往抽獎</a> 
+        </div>
+    </section>
+
+  <%- include('template/footer') %>
+</html>
